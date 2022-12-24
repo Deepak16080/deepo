@@ -48,8 +48,8 @@ class _onbordingState extends State<onbording> {
               );
             },
             itemBuilder: (_, i) {
-              return Padding(
-                padding: const EdgeInsets.all(40),
+              return Container(
+                padding: EdgeInsets.symmetric(vertical: 35,horizontal: 40),
                 child: Column(
                   children: [
                     //SvgPicture
@@ -61,6 +61,7 @@ class _onbordingState extends State<onbording> {
                     //Text
                     Text(
                       contents[i].text,
+                      
                       style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                   ],
@@ -74,26 +75,10 @@ class _onbordingState extends State<onbording> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(contents.length, (index) => buildDot(index, context)),
+            
           ),
         ),
 
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              contents.length,
-              (index) => Container(
-                height: 10,
-                width: 10,
-                margin: EdgeInsets.only(right: 5),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-            ),
-          ),
-        ),
         // ignore: sized_box_for_whitespace
         Container(
           height: 55,
@@ -125,11 +110,11 @@ class _onbordingState extends State<onbording> {
     );
   }
 
-  Container buildDot(int index, BuildContext context) {
+   Container buildDot(int index, BuildContext context) {
     return Container(
       height: 10,
       width: currentIndex == index ? 25 : 10,
-      margin: EdgeInsets.only(right: 5),
+      margin: EdgeInsets.only(right: 5),padding: EdgeInsets.symmetric(vertical: 40,horizontal: 50),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Theme.of(context).primaryColor),
     );
   }
