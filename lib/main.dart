@@ -7,7 +7,7 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: 'DEEPO',
-    home: onbording(),
+    home: Onboarding(),
     theme: ThemeData(primarySwatch: Colors.red),
   ));
 }

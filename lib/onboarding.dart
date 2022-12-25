@@ -1,20 +1,16 @@
-// ignore_for_file: prefer_single_quotes
-
 import 'package:deepo/content_model.dart';
 import 'package:deepo/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-// ignore: camel_case_types
-class onbording extends StatefulWidget {
-  const onbording({super.key});
+class Onboarding extends StatefulWidget {
+  const Onboarding({super.key});
 
   @override
-  State<onbording> createState() => _onbordingState();
+  State<Onboarding> createState() => _OnboardingState();
 }
 
-// ignore: camel_case_types
-class _onbordingState extends State<onbording> {
+class _OnboardingState extends State<Onboarding> {
   int currentIndex = 0;
 
   late PageController _controller;
@@ -49,7 +45,7 @@ class _onbordingState extends State<onbording> {
             },
             itemBuilder: (_, i) {
               return Container(
-                padding: EdgeInsets.symmetric(vertical: 35,horizontal: 40),
+                padding: EdgeInsets.symmetric(vertical: 35, horizontal: 40),
                 child: Column(
                   children: [
                     //SvgPicture
@@ -61,7 +57,6 @@ class _onbordingState extends State<onbording> {
                     //Text
                     Text(
                       contents[i].text,
-                      
                       style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                   ],
@@ -70,22 +65,15 @@ class _onbordingState extends State<onbording> {
             },
           ),
         ),
-        // ignore: avoid_unnecessary_containers
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(contents.length, (index) => buildDot(index, context)),
-            
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(contents.length, (index) => buildDot(index, context)),
         ),
-
-        // ignore: sized_box_for_whitespace
-        Container(
+        SizedBox(height: 20),
+        SizedBox(
           height: 55,
           width: double.infinity,
           child: MaterialButton(
-            // ignore: sort_child_properties_last
-            child: Text(currentIndex == contents.length - 1 ? "Get Started" : "NEXT"),
             onPressed: () {
               if (currentIndex == contents.length - 1) {
                 Navigator.pushReplacement(
@@ -102,19 +90,20 @@ class _onbordingState extends State<onbording> {
             },
             color: Theme.of(context).primaryColor,
             textColor: Colors.white,
-
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+            child: Text(currentIndex == contents.length - 1 ? 'Get Started' : 'NEXT'),
           ),
         ),
       ]),
     );
   }
 
-   Container buildDot(int index, BuildContext context) {
+  Container buildDot(int index, BuildContext context) {
     return Container(
       height: 10,
       width: currentIndex == index ? 25 : 10,
-      margin: EdgeInsets.only(right: 5),padding: EdgeInsets.symmetric(vertical: 40,horizontal: 50),
+      margin: EdgeInsets.only(right: 5),
+      padding: EdgeInsets.symmetric(vertical: 40, horizontal: 50),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Theme.of(context).primaryColor),
     );
   }
